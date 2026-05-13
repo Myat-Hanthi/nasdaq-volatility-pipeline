@@ -40,5 +40,10 @@ Environment
 - Language : Python 3.8+
 - Key Libraries: yfinance, pyspark, plotly, matplotlib
 
-
+Implementation plan
+1. Data Collection : yfinance API -> Python ingestion script
+2. HDFS Storage : Raw CSV -> Parquet format -> store in HDFS
+3. Spark Preprocessing : remove missing values & trading halts -> compute std of log                              returns-> compute beta (NASDAQ-100 ETF)-> compute ATR(Average                            True Range)
+4. Hive Analysis : Monthly volatility trends(GROUP BY months), sector-level risk                            aggregation (GROUP BY sector), Outlier stocks (JOIN with sector                          averages)
+5. Visualization : Volatility heatmap( stock x month), sector risk bar chart, Time-                         series plot (Volitility spikes)
 
