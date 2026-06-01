@@ -8,3 +8,5 @@ derby.log
 metastore_db/
 .DS_Store
 .last_upload_ts
+*.swp
+*.swo
