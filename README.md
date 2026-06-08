@@ -79,17 +79,18 @@ Outlier Stocks (Q3)
 
 Real-Time Kafka Streaming
 
--MRVL triggered ALERT at 8.3x sector baseline (return: -18.3%)
--MRNA triggered ALERT at 3.6x sector baseline (return: -8.4%)
--AMD triggered ALERT at 3.1x sector baseline (return: -11.5%)
--META triggered WARNING at 2.1x sector baseline
+- MRVL triggered ALERT at 8.3x sector baseline (return: -18.3%)
+- MRNA triggered ALERT at 3.6x sector baseline (return: -8.4%)
+- AMD triggered ALERT at 3.1x sector baseline (return: -11.5%)
+- META triggered WARNING at 2.1x sector baseline
 
 Notes
 
 - ANSS and WBA were excluded — both delisted during the study period
 - 60 out of 97 tickers retained after Spark cleaning step
 - Beta computation skipped due to PySpark version constraints on HDP Sandbox 3.0.1
--Kafka broker runs on HDP Sandbox at 172.18.0.2:6667
+- Kafka broker runs on HDP Sandbox at 172.18.0.2:6667
 
 AI Tool Usage
--Clause AI: pipeline architecture design,AI assisted code implementation and debugging
+
+- Claude AI: pipeline architecture design,AI assisted code implementation and debugging
