@@ -23,7 +23,7 @@ log = logging.getLogger(__name__)
 
 #Constants
 RAW_DIR = Path("data/raw")
-YEARS_BACK = 5
+YEARS_BACK = 10
 RETRY_LIMIT = 3
 RETRY_DELAY = 5 #5secs between retries
 BATCH_PAUSE = 2 #seconds between ticker batches(rate-limit courtesy)
