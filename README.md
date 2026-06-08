@@ -99,6 +99,6 @@ Notes
 
 AI Tool Usage
 
-- Claude AI: pipeline architecture design,AI assisted code implementation and debugging
-
+- Claude AI: debugging assistance for Python/PySpark/HiveQL errors, 
+  code review, README proofreading
 
