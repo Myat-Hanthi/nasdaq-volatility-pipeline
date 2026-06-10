@@ -58,7 +58,7 @@ if [ "$INCREMENTAL" = true ]; then
     info "Running incremental ingestion (latest trading day)..."
     $PYTHON ingestion/ingest_ohlcv.py --incremental
 else
-    info "Running full ingestion (5 years)..."
+    info "Running full ingestion (10 years)..."
     $PYTHON ingestion/ingest_ohlcv.py
 fi
 

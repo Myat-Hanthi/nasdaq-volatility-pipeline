@@ -97,6 +97,48 @@ Notes
 - Beta computation skipped due to PySpark version constraints on HDP Sandbox 3.0.1
 - ANSS and WBA excluded — both delisted during the study period
 
+How to Run
+1. Setup
+     git clone https://github.com/Myat-Hanthi/nasdaq-volatility-pipeline.git
+     cd nasdaq-volatility-pipeline
+     pip install -r requirements.txt
+     mkdir -p data/raw visualization/outputs logs 
+
+2. Stage 1: Data Collection
+     python3.8 ingestion/ingest_ohlcv.py
+
+3. Stage 2:HDFS Upload
+     bash hdfs/upload_to_hdfs.sh
+
+4. Stage 3: Spark Preprocessing
+     spark-submit --master "local[*]" --driver-memory 2g \
+         spark/preprocess.py \
+         --input-hdfs  /user/maria_dev/nasdaq/raw/csv \
+         --meta-hdfs   /user/maria_dev/nasdaq/raw/meta/nasdaq100_meta.csv \
+         --output-hdfs /user/maria_dev/nasdaq/processed 
+
+5. Stage 4: Hive Analysis
+    hive -f hive/create_tables.hql
+    hive -f hive/monthly_volatility.hql
+    hive -f hive/sector_risk.hql
+    hive -f hive/outlier_detection.hql
+
+6. Stage 5: Kafka Streaming(Two terminals required)
+    # Terminal 1 - start consumer
+    python3.8 streaming/consumer.py
+
+    # Terminal 2 - start producer
+    python3.8 streaming/producer.py
+
+7. Stage 6: Visualtization
+    python3.8 visualization/volatility_heatmap.py
+    python3.8 visualization/sector_bar_chart.py
+    python3.8 visualization/volatility_timeseries.py
+
+8. Full Pipeline Automation
+    bash automation/daily_pipeline.sh            # full run
+    bash automation/daily_pipeline.sh --incremental  # daily incremental
+
 AI Tool Usage
 
 - Claude AI: debugging assistance for Python/PySpark/HiveQL errors, 
